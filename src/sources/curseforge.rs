@@ -1,4 +1,4 @@
-use std::{borrow::Cow, collections::HashMap};
+use std::{borrow::Cow, collections::BTreeMap};
 
 use anyhow::{anyhow, Result};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
@@ -170,8 +170,8 @@ impl CurseForgeAPI<'_> {
         }
     }
 
-    fn convert_hashes(hashes: &[CurseForgeHash]) -> HashMap<String, String> {
-        let mut result = HashMap::new();
+    fn convert_hashes(hashes: &[CurseForgeHash]) -> BTreeMap<String, String> {
+        let mut result = BTreeMap::new();
         for hash in hashes {
             match hash.algo {
                 1 => {
